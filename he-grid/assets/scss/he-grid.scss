@@ -1,0 +1,35 @@
+.row-flexi-col {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-left: -16px;
+    margin-right: -16px;
+  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+  
+  /* Increase specificity by including the parent class */
+  .row-flexi-col .col-test {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: calc(100% / var(--num-cols));
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  
+    @media (max-width: 768px) {
+      flex-basis: 100%;
+      margin: 0 auto;
+    }  
+  
+    .text-container-test {
+      max-width: 90%;
+    }
+    
+    // If you had other styles for .col-test, include them here
+  }

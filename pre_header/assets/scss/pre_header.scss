@@ -1,0 +1,43 @@
+
+.he-pre-header-title {
+    font-family: Lato, sans-serif;
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 40px;
+    text-transform: uppercase;
+    word-spacing: 0;
+  
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    border-style: initial;
+    border-width: 0;
+    clear: both;
+    outline: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+  }
+  
+  ::selection {
+    background-color: #1b203d !important;
+    color: #fff !important;
+  }
+  
+  :focus, :focus-visible {
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+  
+  @media (max-width: 1023px) {
+    .he-title {
+      font-size: 36px; /* Adjusted for smaller screens */
+    }
+  }
+  
+  @media (max-width: 544px) {
+    .he-title {
+      font-size: 28px; /* Further adjusted for mobile screens */
+    }
+  }

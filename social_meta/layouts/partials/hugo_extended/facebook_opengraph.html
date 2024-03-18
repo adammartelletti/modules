@@ -1,0 +1,8 @@
+<!-- Facebook OpenGraph -->
+<meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+{{ if .IsHome }}
+<meta property="og:image" content="{{ with .Site.Params.hero.hero__image }}{{ . | absURL }}{{ end }}">
+{{ else }}
+<meta property="og:image" content="{{ with .Params.Image }}{{ . | absURL }}{{ end }}">
+{{ end }}

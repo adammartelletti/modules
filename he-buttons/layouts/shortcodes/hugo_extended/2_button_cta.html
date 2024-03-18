@@ -1,0 +1,24 @@
+<div class="he-button-container">
+  {{ $primaryText := .Get "primaryText" }}
+  {{ $primaryUrl := .Get "primaryUrl" }}
+  {{ $secondaryText := .Get "secondaryText" }}
+  {{ $secondaryUrl := .Get "secondaryUrl" }}
+
+  {{/* Primary Button */}}
+  {{ if and $primaryText $primaryUrl }}
+  <a href="{{ if or (strings.HasPrefix $primaryUrl "http://") (strings.HasPrefix $primaryUrl "https://") }}{{ $primaryUrl }}{{ else if not (strings.HasPrefix $primaryUrl "/") }}https://{{ $primaryUrl }}{{ else }}{{ $primaryUrl }}{{ end }}" class="he-button he-button-primary">{{ $primaryText }}</a>
+  {{ else }}
+    {{ with .Page.Param "button_cta.primary" }}
+    <a href="{{ if or (strings.HasPrefix .url "http://") (strings.HasPrefix .url "https://") }}{{ .url }}{{ else if not (strings.HasPrefix .url "/") }}https://{{ .url }}{{ else }}{{ .url }}{{ end }}" class="he-button he-button-primary">{{ .text }}</a>
+    {{ end }}
+  {{ end }}
+
+  {{/* Secondary Button */}}
+  {{ if and $secondaryText $secondaryUrl }}
+  <a href="{{ if or (strings.HasPrefix $secondaryUrl "http://") (strings.HasPrefix $secondaryUrl "https://") }}{{ $secondaryUrl }}{{ else if not (strings.HasPrefix $secondaryUrl "/") }}https://{{ $secondaryUrl }}{{ else }}{{ $secondaryUrl }}{{ end }}" class="he-button he-button-secondary">{{ $secondaryText }}</a>
+  {{ else }}
+    {{ with .Page.Param "button_cta.secondary" }}
+    <a href="{{ if or (strings.HasPrefix .url "http://") (strings.HasPrefix .url "https://") }}{{ .url }}{{ else if not (strings.HasPrefix .url "/") }}https://{{ .url }}{{ else }}{{ .url }}{{ end }}" class="he-button he-button-secondary">{{ .text }}</a>
+    {{ end }}
+  {{ end }}
+</div>

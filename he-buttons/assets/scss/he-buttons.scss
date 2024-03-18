@@ -1,0 +1,44 @@
+.he-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 16px; /* Spacing between buttons */
+}
+
+.he-button {
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1em;
+    text-align: center;
+    transition: all .3s;
+}
+
+.he-button-primary {
+    background-color: var(--primary-color);
+    color: var(--lightest);
+    border: none;
+}
+
+.he-button-primary:hover {
+    filter: brightness(95%); /* Darken background color on hover */
+}
+
+.he-button-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.he-button-secondary:hover {
+    background-color: var(--lightest); /* Adjust as needed */
+    color: var(--primary-color); /* Uncomment if you want to change the text color on hover */
+}
+
+@media (max-width: 768px) {
+    .he-button {
+        padding: 16px 24px;
+        font-size: 16px; /* Adjust for smaller screens */
+    }
+}

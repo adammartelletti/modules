@@ -1,0 +1,57 @@
+.accordion {
+  border-bottom: 1px solid var(--border-color);
+  max-width: 680px;
+}
+
+.accordion-container {
+  .accordion:nth-of-type(1) {
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+
+  .centered-accordion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    padding: 1rem 0rem;
+    font-size: 1.1rem;
+    width: 100%;
+    font-weight: bold;
+    border: 0;
+    background-color: var(--background-color);
+    color: var(--text-color); /* Add this if the text inside header needs to follow the dark theme */
+  }
+  
+  .accordion-icon {
+    width: 0.78em;
+    height: 0.78em;
+    transform: rotate(-90deg);
+    transition: transform 0.2s ease;
+    color: var(--icon-color); /* Define this variable in your dark theme if you want to control the icon color */
+  }
+  
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    max-width: 860px;
+    /* padding: 0 0rem; */
+    /* background-color: var(--background-alt-color); */
+    color: var(--text-color); /* Add this if the text inside content needs to follow the dark theme */
+  }
+  
+  .accordion.active > .accordion-icon {
+    transform: rotate(0deg);
+  }
+  
+  .accordion.active > .accordion-content {
+    max-height: 100vh;
+  }
+  

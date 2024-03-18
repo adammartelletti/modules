@@ -1,0 +1,39 @@
+<!-- Schema.org FAQPage -->
+{{ if .Params.faqs }}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {{- range $i, $faq := .Params.faqs -}}
+        {{- if $i }}, {{- end }}
+        {
+          "@type": "Question",
+          "name": {{ $faq.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ $faq.answer | jsonify }}
+          }
+        }
+      {{- end -}}
+    ]
+  }
+</script>
+{{ end }}
+<!-- End Schema.org FAQPage -->
+
+<!-- Add accordion styles and scripts -->
+{{ $accordionStyles := resources.Get "scss/accordion.scss" | toCSS | minify | fingerprint }}
+<link
+  rel="stylesheet"
+  href="{{ $accordionStyles.Permalink }}"
+  integrity="{{ $accordionStyles.Data.Integrity }}"
+/>
+
+{{ $accordionScript := resources.Get "js/accordion.js" | minify | fingerprint }}
+<script
+  src="{{ $accordionScript.Permalink }}"
+  integrity="{{ $accordionScript.Data.Integrity }}"
+  crossorigin="anonymous"
+></script>
+<!-- End accordion styles and scripts -->
