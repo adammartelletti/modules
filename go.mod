@@ -1,3 +1,3 @@
-module github.com/adammartelletti/modules/accordions
+module github.com/adammartelletti/modules
 
 go 1.20
