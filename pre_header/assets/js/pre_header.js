@@ -36,8 +36,17 @@
         }).join(' ');
       }
     
-      // Apply the text processing to all h1, h2, h3, h4 elements
-      document.querySelectorAll('h1, h2, h3, h4').forEach(header => {
-        header.textContent = processHeaderText(header.textContent.trim());
-      });
-    });
+// A new function to recursively transform text nodes, preserving elements
+function transformTextNodes(node) {
+  if (node.nodeType === Node.TEXT_NODE) { // Text node
+    node.nodeValue = processHeaderText(node.nodeValue.trim());
+  } else if (node.nodeType === Node.ELEMENT_NODE) { // Element node
+    node.childNodes.forEach(transformTextNodes); // Recurse into children
+  }
+}
+
+// Apply the text processing to all h1, h2, h3, h4 elements
+document.querySelectorAll('h1, h2, h3, h4').forEach(header => {
+  transformTextNodes(header);
+});
+});
