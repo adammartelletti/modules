@@ -1,38 +1,43 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // Function to check if a word has more than one uppercase letter, indicating it should keep its case
-  function shouldKeepCase(word) {
-    return word.replace(/[^A-Z]/g, "").length > 1;
-  }
 
-  // Function to process each word in the header, applying capitalization rules
-  function processWord(word, index, words) {
-    // Capitalize the first word of the header, or any word following a dash
-    if (index === 0 || words[index - 1].endsWith('-')) {
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    }
-
-    // Capitalize "I" if it stands alone, regardless of its position
-    if (word.toLowerCase() === 'i') {
-      return word.toUpperCase();
-    }
-
-    // If the word should keep its case (has more than one uppercase letter), return it as is
-    if (shouldKeepCase(word)) {
-      return word;
-    }
-
-    // Lowercase all other words
-    return word.toLowerCase();
-  }
-
-  // Function to process the header text
-  function processHeaderText(text) {
-    // Split the text into words and process each word according to the rules
-    return text.split(' ').map(processWord).join(' ');
-  }
-
-  // Apply the text processing to all h1, h2, h3 elements
-  document.querySelectorAll('h1, h2, h3').forEach(header => {
-    header.textContent = processHeaderText(header.textContent.trim());
-  });
-});
+    document.addEventListener("DOMContentLoaded", function() {
+      // Function to check if a word should keep its case
+      // Keeps its case if it has more than one uppercase letter, regardless of its position
+      function shouldKeepCase(word) {
+        // Check for more than one uppercase letter in the word
+        return word.replace(/[^A-Z]/g, "").length > 1;
+      }
+    
+      // Determine if the current word is the start of a new segment (after a dash, number, etc.)
+      function isStartOfNewSegment(word, index, words) {
+        if (index === 0) return true; // First word in the text
+        const prevWord = words[index - 1];
+        return prevWord.endsWith('-') || /\d/.test(prevWord.slice(-1)) || prevWord.endsWith(':');
+      }
+  
+    
+      // Function to process the header text
+      function processHeaderText(text) {
+        let words = text.split(' ');
+        return words.map((word, index, words) => {
+          // If the word has more than one uppercase letter, keep its case
+          if (shouldKeepCase(word)) {
+            return word;
+          }
+          // Explicitly capitalize "I" if it stands alone
+          if (word === "i" || word === "I") {
+            return "I";
+          }
+          // Capitalize the first letter of the first word and any word after a dash or number
+          if (isStartOfNewSegment(word, index, words)) {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          }
+          // Lowercase all other words
+          return word.toLowerCase();
+        }).join(' ');
+      }
+    
+      // Apply the text processing to all h1, h2, h3, h4 elements
+      document.querySelectorAll('h1, h2, h3, h4').forEach(header => {
+        header.textContent = processHeaderText(header.textContent.trim());
+      });
+    });
