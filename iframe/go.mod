@@ -1,2 +1,2 @@
-module github.com/adammartelletti/modules/iframe;
+module github.com/adammartelletti/modules/iframe
 go 1.20
