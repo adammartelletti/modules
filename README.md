@@ -1,7 +1,3 @@
-Certainly! Below is a simple README template that explains how to use the `hugo mod init` command for initializing your Hugo site as a module and a Python script to automatically create `go.mod` files for each submodule within your Hugo project. This README assumes the audience has some familiarity with Hugo, Go modules, and basic command line operations.
-
----
-
 # Hugo Modules Setup Guide
 
 This guide provides instructions on setting up your Hugo project as a module and creating `go.mod` files for each submodule within your project. This setup allows you to easily manage dependencies and share your Hugo modules across projects.
