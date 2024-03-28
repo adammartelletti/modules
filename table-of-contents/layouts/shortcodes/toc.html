@@ -1,11 +1,9 @@
 {{ $class:= .Get "class" }}
-<details class="table-of-content {{$class}}">
-  <summary>
+<toc class="check-list {{$class}}">
     {{ with i18n "toc" }}
-      {{ . }}
+        {{ . }}
     {{ else }}
-      Table Of Contents
+        <!-- Fallback content or empty -->
     {{ end }}
-  </summary>
-  {{ .Page.TableOfContents }}
-</details>
+    {{ .Page.TableOfContents }}
+</toc>

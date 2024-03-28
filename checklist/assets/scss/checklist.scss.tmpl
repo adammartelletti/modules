@@ -8,7 +8,7 @@ $checklistColor: '{{ .Site.Data.hugo_extended.checklistColor.value | urlize }}';
 }
 
 .checklist li::before {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='ListIcon List__itemIcon' width='16' height='16' viewBox='0 0 16 16'%3E%3Cg fill='{{ if not (strings.HasPrefix .Site.Data.hugo_extended.checklistColor.value "#") }}%23{{ end }}{{ .Site.Data.hugo_extended.checklistColor.value | urlize }}' fill-rule='evenodd'%3E%3Ccircle opacity='.15' cx='8' cy='8' r='8'%3E%3C/circle%3E%3Cpath d='M11.41 4.93L6.64 9.54 5.38 8.18a.7.7 0 0 0-.87-.04.61.61 0 0 0-.18.8l1.5 2.45c.15.22.41.36.69.36.28 0 .53-.14.68-.36.24-.31 4.82-5.78 4.82-5.78.6-.6-.13-1.15-.6-.68z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='ListIcon List__itemIcon' width='16' height='16' viewBox='0 0 16 16'%3E%3Cg fill='%23var(--checklist-color)' fill-rule='evenodd'%3E%3Ccircle opacity='.15' cx='8' cy='8' r='8'%3E%3C/circle%3E%3Cpath d='M11.41 4.93L6.64 9.54 5.38 8.18a.7.7 0 0 0-.87-.04.61.61 0 0 0-.18.8l1.5 2.45c.15.22.41.36.69.36.28 0 .53-.14.68-.36.24-.31 4.82-5.78 4.82-5.78.6-.6-.13-1.15-.6-.68z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
     display: inline-block;
     width: 18px;
     height: 18px;
